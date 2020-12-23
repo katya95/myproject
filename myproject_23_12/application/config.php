@@ -1,8 +1,9 @@
 <?php
-/**
- * Class wrapper for working with PDO
- */
-class DB
+
+//$db = new PDO('mysql:host=localhost;dbname=mysite', '[root]', '[]');
+//$registry->set ('db', $db);
+
+/*class DB
 {
 
   //const DB_HOST = '127.0.0.1'; 
@@ -13,12 +14,10 @@ class DB
   const CHARSET = 'utf8';
   const DB_PREFIX = '';
  
-
   static private $db;
  
   protected static $instance = null;
  
-//return PDOStatement. Throws Exception
   public function __construct(){
     if (self::$instance === null){
       try {
@@ -42,22 +41,19 @@ class DB
   public static function query($stmt)  {
     return self::$db->query($stmt);
   }
- //return PDOStatement
+ 
   public static function prepare($stmt)  {
     return self::$db->prepare($stmt);
   }
  
-//return int
   static public function exec($query) {
     return self::$db->exec($query);
   }
  
-//return string
   static public function lastInsertId() {
     return self::$db->lastInsertId();
   }
  
-//return PDOStatement. Throws Exception
   public static function run($query, $args = [])  {
     try{
       if (!$args) {
@@ -71,17 +67,14 @@ class DB
     }
   }
  
-//return one record
   public static function getRow($query, $args = [])  {
     return self::run($query, $args)->fetch();
   }
- 
-//return all records
+
   public static function getRows($query, $args = [])  {
     return self::run($query, $args)->fetchAll();
   }
  
-//return one value
   public static function getValue($query, $args = [])  {
     $result = self::getRow($query, $args);
     if (!empty($result)) {
@@ -90,14 +83,13 @@ class DB
     return $result;
   }
  
-//return value value of one column
   public static function getColumn($query, $args = [])  {
     return self::run($query, $args)->fetchAll(PDO::FETCH_COLUMN);
   }
- //any request
+ 
   public static function sql($query, $args = [])
   {
     self::run($query, $args);
   }
-}
+}*/
 ?>
