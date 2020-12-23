@@ -1,6 +1,8 @@
 <h1>Загрузка фотографии</h1>         
     <?php        
-            function can_upload($file)
+ 
+    class Avatar{
+           public function can_upload($file)
             {
    				 if($file['name'] == '')
 				return 'Выберите файл';
@@ -15,7 +17,7 @@
 		return true;
  		 }
 //function to add image in folder and linking to user id in database. Filename is equal to user id 
-  		function make_upload($file)
+  		public function make_upload($file)
   		{	
  		 $a=0;
  		 //comparison with user id
@@ -27,6 +29,7 @@
 		$connection=new DB();
 		$connection->query("UPDATE user SET avatar='$name' WHERE id_user='$a'") ;
  		 }
+    }
 ?>
 <!-- Form from load image -->
     <form method="post" enctype="multipart/form-data">
@@ -36,12 +39,14 @@
     
      <?php
 
-    if(isset($_FILES['file']))
+     $image=new Avatar();
+     
+    if(isset( $_FILES['file']))
      {
-      $c = can_upload($_FILES['file']);
+      $c =  $image->can_upload($_FILES['file']);
     	 if($c === true)
     	 {
-     	   make_upload($_FILES['file']);
+     	    $image->make_upload($_FILES['file']);
       	  echo "<strong>file uploaded successfully!</strong>";
        	 }
    	   else
